@@ -17,7 +17,7 @@ export const HouseDetails = () => {
 
     useEffect(() => {
         getHouseDetails();
-    }, [])
+    }, [getHouseDetails])
 
     return (
         <>

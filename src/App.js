@@ -4,6 +4,7 @@ import { HomeView } from './components/HomeView/HomeView';
 import { Houses } from './components/Houses/Houses';
 import { HouseDetails } from './components/HouseDetails/HouseDetails';
 import './index.css';
+import { NewHouseForm } from './components/NewHouseForm/NewHouseForm';
 
 export const App = () => {
   return (
@@ -11,11 +12,14 @@ export const App = () => {
       <Route exact path={'/'}>
         <HomeView />
       </Route>
-      <Route exact path={'/houses'}>
-        <Houses />
+      <Route path={'/houses/add'}>
+        <NewHouseForm />
       </Route>
       <Route path={'/houses/:id'}>
         <HouseDetails />
+      </Route>
+      <Route exact path={'/houses'}>
+        <Houses />
       </Route>
     </Switch>
   );
