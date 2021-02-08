@@ -1,19 +1,24 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 
 export const HouseDetails = () => {
     const [houseDetails, setHouseDetails] = useState(undefined);
     const {id} = useParams();
+    const history = useHistory();
 
-    const getHouseDetails = async() => {
+    const getHouseDetails = useCallback(async() => {
         try {
             const response = await axios.get(`http://mr-test-backend.sadek.usermd.net/houses/${id}`);
             setHouseDetails(response.data)
         } catch (err) {
             console.warn(err);
         }
-    }
+    }, []);
+
+    const redirectToHouses = () => {
+        history.push('/houses');
+    };
 
     useEffect(() => {
         getHouseDetails();
@@ -30,6 +35,8 @@ export const HouseDetails = () => {
                     <li>Price: {houseDetails.price}</li>
                 </ul>
             )}
+
+            <button onClick={redirectToHouses}>Go back</button>
         </>
     )
 }

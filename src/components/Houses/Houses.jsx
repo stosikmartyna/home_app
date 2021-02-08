@@ -7,7 +7,11 @@ export const Houses = () => {
     const history = useHistory();
 
     const redirectToNewHouseForm = () => {
-        history.push('/houses/add')
+        history.push('/houses/add');
+    }
+
+    const redirectToHomepage = () => {
+        history.push('/');
     }
 
     const getHouses = async() => {
@@ -26,6 +30,7 @@ export const Houses = () => {
     return (
         <div>
             <h1>Houses</h1>
+            <button onClick={redirectToHomepage}>Go back</button>
             <button onClick={redirectToNewHouseForm}>Add house</button>
             <ul>
                 {houses?.map(house => {
